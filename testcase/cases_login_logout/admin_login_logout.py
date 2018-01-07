@@ -3,11 +3,13 @@
 @author:Administrator 
 @file: admin_login_logout.py.py 
 @time: 2018/01/07 
-"""  
+"""
+import logging
 import unittest
 import time
 import ddt
 from selenium import webdriver
+from lib.utils import capture_screen
 
 test_data = [['admin', '123456', '退出'],
              ['invalid', '123455', '用户名不存在'],
@@ -25,6 +27,7 @@ class BugFree管理员登录退出(unittest.TestCase):
         self.driver.implicitly_wait(30)
         self.base_url = "http://192.168.2.87"
         driver = self.driver
+        logging.info("打开浏览器成功")
 
     def tearDown(self):
         pass
@@ -33,6 +36,7 @@ class BugFree管理员登录退出(unittest.TestCase):
     @ddt.data(*test_data)
     def test_admin_login_test(self, admin, password, flag):
         """admin的登录的所有测试用例"""
+        logging.info("test_admin_login_test start......")
         driver = self.driver
         driver.get(self.base_url + "/bugfree/index.php/site/login")
         driver.find_element_by_id("LoginForm_username").clear()
@@ -43,3 +47,11 @@ class BugFree管理员登录退出(unittest.TestCase):
         driver.find_element_by_id("SubmitLoginBTN").click()
         time.sleep(3)
         self.assertIn(flag, driver.page_source)
+        logging.info("test data is : {0},{1},{2}".format(admin,password,flag))
+        capture_screen(driver)
+        # pic_path = capture_screen(driver)
+        # if pic_path is None:
+        #     logging.error("截图不成功")
+        # else:
+        #     logging.info(pic_path)
+        logging.info("test_admin_login_test end......")
