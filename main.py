@@ -20,6 +20,9 @@ if __name__ == "__main__":
         suite = unittest.TestSuite()
         loader = unittest.TestLoader()
         suite.addTest(loader.loadTestsFromTestCase(BugFree管理员登录退出))
+        # suite.addTest(loader.loadTestsFromTestCase(BugFree管理员登录退出))
+        # suite.addTest(loader.loadTestsFromTestCase(BugFree管理员登录退出))
+
         #unittest.TextTestRunner(verbosity=2).run(suite)
         fp = open('reports/report_bugfree_{0}.html'.format(time.strftime("%Y-%m-%d %H-%M-%S")), 'wb')
         runner = HTMLTestRunner.HTMLTestRunner(

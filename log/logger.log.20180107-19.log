@@ -1,0 +1,3 @@
+2018-01-07 19:29:52,076 - main.py:18 - INFO - main - <module> - 本次测试开始执行，以下是详细日志:
+2018-01-07 19:29:56,877 - admin_login_logout.py:30 - INFO - admin_login_logout - setUp - 打开浏览器成功
+2018-01-07 19:29:56,877 - admin_login_logout.py:39 - INFO - admin_login_logout - test_admin_login_test - test_admin_login_test start......
