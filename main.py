@@ -11,6 +11,8 @@ import time
 import traceback
 from lib.Logger import Logger
 from testcase.cases_login_logout.admin_login_logout import BugFree管理员登录退出
+from testcase.common_module.login_logout import Login
+from testcase.common_module.create_new_clients import CreateNewClients
 
 
 if __name__ == "__main__":
@@ -19,16 +21,16 @@ if __name__ == "__main__":
     try:
         suite = unittest.TestSuite()
         loader = unittest.TestLoader()
-        suite.addTest(loader.loadTestsFromTestCase(BugFree管理员登录退出))
         # suite.addTest(loader.loadTestsFromTestCase(BugFree管理员登录退出))
-        # suite.addTest(loader.loadTestsFromTestCase(BugFree管理员登录退出))
+        suite.addTests(loader.loadTestsFromTestCase(Login))#把测试类登陆方法加载到suite里
+        # suite.addTests(loader.loadTestsFromTestCase(CreateNewClients))  # 把测试类新增客户方法加载到suite里
 
         #unittest.TextTestRunner(verbosity=2).run(suite)
-        fp = open('reports/report_bugfree_{0}.html'.format(time.strftime("%Y-%m-%d %H-%M-%S")), 'wb')
+        fp = open('reports/report_{0}.html'.format(time.strftime("%Y-%m-%d %H-%M-%S")), 'wb')
         runner = HTMLTestRunner.HTMLTestRunner(
             stream=fp,
-            title='Bugfree的测试报告',
-            description='Bugfree的所有测试用例执行细节'
+            title='测试报告',
+            description='所有测试用例执行细节'
         )
         runner.run(suite)
         logging.info("测试顺利结束！")

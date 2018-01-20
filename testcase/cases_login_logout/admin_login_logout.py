@@ -54,6 +54,8 @@ class BugFree管理员登录退出(unittest.TestCase):
         driver.find_element_by_id("LoginForm_password").send_keys(password)
         driver.find_element_by_id("LoginForm_rememberMe").click()
         driver.find_element_by_id("SubmitLoginBTN").click()
+        # handles = driver.window_handles
+        # driver.switch_to.window(handles[1])
         time.sleep(3)
         self.assertIn(flag, driver.page_source)
         logging.info("test data is : {0},{1},{2}".format(admin,password,flag))
